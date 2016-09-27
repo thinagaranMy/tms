@@ -1,12 +1,16 @@
 package com.escobar.concepts.transport.services;
 
-import com.escobar.concepts.transport.entities.DestinationSite;
-/**
- * 
- * @author thinagaranharidass thinagaran.k.haridass@gmail.com
- *
- */
-public interface DestinationSiteService {
+import java.util.List;
 
-	DestinationSite findDestinationSiteByCode(String Code);
+import com.escobar.concepts.transport.entities.DestinationSite;
+
+public interface DestinationSiteService {
+	
+	DestinationSite findDestinationSiteByCode(String code);
+	
+	DestinationSite saveDestinationSite(DestinationSite destinationSite);
+
+	List<DestinationSite> findAllDestinationSite();
+	
+	DestinationSite findDestinationSiteById(Long id) ;
 }

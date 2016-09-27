@@ -7,18 +7,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.escobar.concepts.transport.entities.DestinationSite;
 import com.escobar.concepts.transport.entities.OriginSite;
 import com.escobar.concepts.transport.entities.Trip;
 import com.escobar.concepts.transport.entities.User;
-import com.escobar.concepts.transport.repositories.DestinationSiteRepository;
 import com.escobar.concepts.transport.repositories.OriginSiteRepository;
 import com.escobar.concepts.transport.repositories.TripRepository;
 import com.escobar.concepts.transport.repositories.UserRepository;
 
 /**
  * 
- * @author thinagaranharidass thinagaran.k.haridass@gmail.com
+ * @author thinagaranharidass 
+ * thinagaran.k.haridass@gmail.com
  *
  */
 @SpringBootApplication
@@ -26,12 +25,16 @@ public class TmsApplication {
 
 	@Autowired
 	UserRepository userRepository;
+	
 	@Autowired
 	OriginSiteRepository originSiteRepository;
-	@Autowired
-	DestinationSiteRepository destinationSiteRepository;
+	
 	@Autowired
 	TripRepository tripRepository;
+//	
+//	@Autowired
+//	DestinationSiteRepository destinationSiteRepository;
+
 	
 	private Logger log = Logger.getLogger(TmsApplication.class);
 
@@ -49,7 +52,9 @@ public class TmsApplication {
 			userRepository.save(new User("Sethu", "Raaj", "sethu.raaj@gmail.com", "GenericPassword"));
 			
 			originSiteRepository.save(new OriginSite("SBN", "SEREMBAN"));
-			destinationSiteRepository.save(new DestinationSite("KUL", "Kuala Lumpur"));
+			
+			//tripRepository.save(new Trip( originSiteRepository.findOriginSiteByCode("SBN"), 60, 7.20));
+		//	destinationSiteRepository.save(new DestinationSite("KUL", "Kuala Lumpur"));
 			
 			//tripRepository.save(new Trip(new OriginSite("SBN", "SEREMBAN"), new DestinationSite("KUL", "Kuala Lumpur"), 60, 7.20));
 			
@@ -58,6 +63,15 @@ public class TmsApplication {
 			for (User user : userRepository.findAll()) {
 				log.info(user.toString());
 			}
+			log.info("Fetching all oringin site");
+			for(OriginSite os : originSiteRepository.findAll()){
+				log.info(os.toString());
+			}
+			log.info("Fetching all trip");
+			for(Trip trip : tripRepository.findAll()){
+				log.info(trip.toString());
+			}
+			
 		};
 	}
 }
