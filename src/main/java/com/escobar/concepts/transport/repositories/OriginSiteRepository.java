@@ -11,4 +11,5 @@ import com.escobar.concepts.transport.entities.OriginSite;
  */
 public interface OriginSiteRepository extends CrudRepository<OriginSite, Long> {
 	OriginSite findOriginSiteByCode(String code);
+	OriginSite findOriginSiteByName(String name);
 }

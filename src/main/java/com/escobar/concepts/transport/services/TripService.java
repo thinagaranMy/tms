@@ -1,5 +1,8 @@
 package com.escobar.concepts.transport.services;
 
+import java.util.List;
+
+import com.escobar.concepts.transport.entities.DestinationSite;
 import com.escobar.concepts.transport.entities.OriginSite;
 import com.escobar.concepts.transport.entities.Trip;
 /**
@@ -9,6 +12,10 @@ import com.escobar.concepts.transport.entities.Trip;
  */
 public interface TripService {
 
-	Trip findTripByOriginSite(OriginSite originSite);
+	List<Trip> findAllTrips();
+	Trip saveTrip(Trip trip);
+	List<Trip> findTripByOriginSite(OriginSite originSite);
+	Trip findByOriginSiteAndDestinationSite(OriginSite originSite, DestinationSite destinationSite);
+	
 
 }

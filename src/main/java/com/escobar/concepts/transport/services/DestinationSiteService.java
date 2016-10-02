@@ -8,6 +8,8 @@ public interface DestinationSiteService {
 	
 	DestinationSite findDestinationSiteByCode(String code);
 	
+	DestinationSite findDestinationSiteByName(String name);
+	
 	DestinationSite saveDestinationSite(DestinationSite destinationSite);
 
 	List<DestinationSite> findAllDestinationSite();

@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "originSite")
@@ -21,7 +22,7 @@ public class OriginSite {
 	private Long id;
 
 	@OneToMany(mappedBy = "originSite", cascade = CascadeType.ALL)
-	@JsonManagedReference
+	@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 	private Set<Trip> trips;
 
 	private String code;
@@ -82,7 +83,7 @@ public class OriginSite {
 
 	@Override
 	public String toString() {
-		return "OriginSite_new [id=" + id + ", code=" + code + ", name=" + name + "]";
+		return "OriginSite [id=" + id + ", code=" + code + ", name=" + name + "]";
 	}
 
 }

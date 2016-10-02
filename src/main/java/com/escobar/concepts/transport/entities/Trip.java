@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * 
@@ -38,9 +40,9 @@ public class Trip {
 
 	public Trip() {}
 
-	public Trip(OriginSite originSite, int distance, double price) {
+	public Trip(OriginSite originSite,DestinationSite destinationSite, int distance, double price) {
 		super();
-
+		this.destinationSite = destinationSite;
 		this.originSite = originSite;
 		this.distance = distance;
 		this.price = price;
@@ -61,6 +63,15 @@ public class Trip {
 	public void setOriginSite(OriginSite originSite) {
 		this.originSite = originSite;
 	}
+	
+
+	public DestinationSite getDestinationSite() {
+		return destinationSite;
+	}
+
+	public void setDestinationSite(DestinationSite destinationSite) {
+		this.destinationSite = destinationSite;
+	}
 
 	public int getDistance() {
 		return distance;
@@ -80,8 +91,9 @@ public class Trip {
 
 	@Override
 	public String toString() {
-		return "Trip_new [id=" + id + ", originSite=" + originSite + ", distance=" + distance + ", price=" + price
-				+ "]";
+		return "Trip [id=" + id + ", originSite=" + originSite + ", destinationSite=" + destinationSite + ", distance="
+				+ distance + ", price=" + price + "]";
 	}
 
+	
 }

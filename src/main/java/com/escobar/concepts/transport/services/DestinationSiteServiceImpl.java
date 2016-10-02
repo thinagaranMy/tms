@@ -36,5 +36,10 @@ public class DestinationSiteServiceImpl implements DestinationSiteService{
 		// TODO Auto-generated method stub
 		return destinationSiteRepository.findOne(id);
 	}
+
+	@Override
+	public DestinationSite findDestinationSiteByName(String name) {
+		return destinationSiteRepository.findDestinationSiteByName(name);
+	}
 	
 }
